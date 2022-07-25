@@ -6,13 +6,13 @@ from scrapy.spiders import Rule, CrawlSpider
 from ..item_loaders import PCItemLoader
 from ..items import PCItem
 
-NO_PAGES = 22
+PAGES = 22
 
 
 class PCSpider(CrawlSpider, ABC):
     name = 'pc_spider'
     allowed_domains = ['komputronik.pl']
-    start_urls = ['https://www.komputronik.pl/search-filter/5801/komputery-do-gier?p=' + str(x) for x in range(1, NO_PAGES)]
+    start_urls = ['https://www.komputronik.pl/search-filter/5801/komputery-do-gier?p=' + str(x) for x in range(1, PAGES)]
     custom_settings = {
         'ITEM_PIPELINES': {'computers.pipelines.ComputersPipeline': 300}
     }
